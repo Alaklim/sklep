@@ -1,0 +1,110 @@
+body{
+    padding: 0%;
+    background: linear-gradient( rgb(250, 206, 148), rgb(255, 177, 125));
+    background-color: rgb(250, 206, 148);
+    color: rgb(80, 42, 16);
+    font-family: sans-serif;
+    overflow: auto;
+    height: 170vh;
+    width: 100%;
+}
+html{
+    scroll-behavior: smooth;
+}
+header img{
+    height: 300px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.banner img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.banner img.active{
+    opacity: 1;
+}
+.prom{
+    margin-top: 50px;
+    margin-left: 25%;
+    height: 80vh;
+    width: 50%;
+    background-color: rgba(255, 155, 88, 0.781);
+    border-radius: 20px;
+}
+table{
+    margin: 2%;
+}
+table th{
+    padding: 10px;
+}
+table, th, td{
+    border: 1px rgb(80, 42, 16) dashed ;
+}
+.prom h1{
+    padding-left: 32%;
+    padding-top: 40vh;
+}
+td img{
+    height: 70px;
+    width: 140px;
+}
+td button{
+    margin: 10  px;
+    height: 60px;
+    width: 130px;
+    border: 0;
+    border-radius: 20%;
+    color: rgb(255, 235, 222);
+    font-size: 15px;
+    background-color: rgb(238, 95, 0);
+    transform: scale(0.9);
+    transition: .3s;
+}
+td button:hover{
+    background-color: rgba(0, 0, 0, 0.178) ;
+    transform: scale(1);
+    filter: brightness(50%);
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.445);
+}
+p{
+    margin-left: 15%;
+}
+button{
+    height: 60px;
+    width: 130px;
+    border: 0;
+    border-radius: 20%;
+    color: rgb(255, 235, 222);
+    font-size: 15px;
+    background-color: rgb(238, 95, 0);
+    transform: scale(0.9);
+    transition: .3s;
+    flex: right;
+}
+button:hover{
+    background-color: rgba(0, 0, 0, 0.178) ;
+    transform: scale(1);
+    filter: brightness(50%);
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.445);
+}
+.in p{
+    font-size: x-large;
+    margin-left: 380px;
+}
+.in{
+    margin-top: 60px;
+}
+input{
+    height: 30px;
+    width: 300px;
+    background-color: rgba(238, 95, 0, 0.527);
+    border: 0.5px rgb(207, 100, 28) dashed;
+    margin-left: 50px;
+    color: antiquewhite;
+    font-size: 25px;
+    border-radius: 10px;
+}
