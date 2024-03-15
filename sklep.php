@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,16 @@
     <title>Sporzywczak u wróżki Cecyli</title>
 </head>
 <body>
+<?php 
+         $serwer = 'localhost';
+         $uz = 'root';
+         $haslo = '';
+         $baza = 'sklep'; 
+
+         $poloczenie = mysqli_connect($serwer, $uz, $haslo, $baza);
+
+         
+    ?>
     <header>
         <div class=banner>
             <img src="banner1.png" id="ban" class="active">
@@ -27,34 +40,19 @@
                 <th>Cena brutto</th>
                 <th>Zobacz wiecej</th>
             </tr>
-            <tr>
-                <td><img src="produkty/pomidor.jpg"></td>
-                <td>Pomidory</td>
-                <td>Pomidory z ogrótka cioci Cecyli, bez żadnych chemikali</td>
-                <td>za 1szt - 4zł/brutto</td>
-                <td><button><a href="pomidory.php">Zobacz</a></button></td>
-            </tr>
-            <tr>
-                <td><img src="produkty/cake.jpg"></td>
-                <td>Ciasto czekoladowe</td>
-                <td>Ciasto urodzinowe, na stanie mamy ich: </td>
-                <td>40zł/brutto</td>
-                <td><button><a href="ciasto.php">Zobacz</a></button></td>
-            </tr>
-            <tr>
-                <td><img src="produkty/wrozenie-kart.jpg"></td>
-                <td>Wróżenie z Kart Tarota</td>
-                <td>Możesz wykupić wróżenie z kart</td>
-                <td>za 30min - 170zł/brutto</td>
-                <td><button><a href="wrozka.html">Zobacz</a></button></td>
-            </tr>
-            <tr>
-                <td><img src="produkty/marchewki.jpg"></td>
-                <td>Marchewki</td>
-                <td>Swierze marchewy, na stanie mamy ich: </td>
-                <td>za 1kg - 27zł/brutto</td>
-                <td><button><a href="marchewy.php">Zobacz</a></button></td>
-            </tr>
+            <?php 
+            $wyszek = mysqli_query($poloczenie, "SELECT * FROM produkty");
+            for($r = 0; $r < $wyk = mysqli_fetch_array($wyszek); $r++){
+            echo"<tr>
+                <td><img style width='140' height='70' src='data:image/png;base64," . base64_encode($wyk['obraz']) . "' /></td>
+                <td>{$wyk['nazwaPr']}</td>
+                <td>{$wyk['opis']}</td>
+                <td>{$wyk['koszt']}</td>";
+                $_SESSION['d'] = $r;
+                echo "<td><form method='post' action='prod.php'><button type='submit' name='button' value='{$r}'>Zobacz</button></form></td>
+            </tr>";
+            }
+            ?>
         </table>
     </div>
     <div id="products"><a name="prod"></a>
@@ -66,6 +64,13 @@
             <th>Opis</th>
             <th>Cena brutto</th>
             <th>Zobacz wiecej</th>
+        </tr>
+        <tr>
+            <td><img src="produkty/wrozenie-kart.jpg"></td>
+            <td>Wróżenie z Kart Tarota</td>
+            <td>Możesz wykupić wróżenie z kart</td>
+            <td>za 30min - 170zł/brutto</td>
+            <td><button><a href="wrozka.html">Zobacz</a></button></td>
         </tr>
         <tr>
             <td><img src="produkty/ogorek.jpg"></td>
@@ -91,6 +96,11 @@
     </table>
     </div>
     </main>
+    <?php 
+        
+        mysqli_close($poloczenie);
+            var_dump($_SESSION);
+    ?>
     <script src="banner.js"></script>
 </body>
 </html>
